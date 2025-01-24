@@ -17,30 +17,17 @@ This happens because GitHub no longer supports password authentication for Git o
 
 ---
 
-## **Option 1: Use a Personal Access Token (PAT)**
+## **Option 1: Use HTTPS with a Token in the URL (Quick Fix)**
 
-### Step 1: Create a Personal Access Token (PAT)
-1. Go to [GitHub Personal Access Tokens settings](https://github.com/settings/tokens).
-2. Click **Generate new token** (or **Generate new token (classic)**).
-3. Choose the following settings:
-   - **Scopes**: Select the options you need (e.g., `repo` to access repositories).
-   - **Expiration**: Set how long the token should last (e.g., 30 days).
-4. Click **Generate token** and **copy the token**. Save it securely because you won’t see it again.
-
-### Step 2: Use the Token in Git
-1. When pushing to GitHub, use your token as the password:
+If you want a quick solution without setting up SSH or saving tokens:
+1. Change your repository URL to include the token:
+   ```bash
+   https://<your_token>@github.com/your_username/your_repository.git
+   ```
+2. Push your changes:
    ```bash
    git push
-   Username for 'https://github.com': your_username
-   Password for 'https://your_username@github.com': [paste your token here]
    ```
-
-2. Save the token for future use (optional):
-   ```bash
-   git config --global credential.helper store
-   ```
-   After running this, Git will remember your token next time you push.
-
 ---
 
 ## **Option 2: Use SSH for Authentication**
@@ -85,17 +72,29 @@ This happens because GitHub no longer supports password authentication for Git o
 
 ---
 
-## **Option 3: Use HTTPS with a Token in the URL (Quick Fix)**
+## **Option 3: Use a Personal Access Token (PAT)**
 
-If you want a quick solution without setting up SSH or saving tokens:
-1. Change your repository URL to include the token:
-   ```bash
-   https://<your_token>@github.com/your_username/your_repository.git
-   ```
-2. Push your changes:
+### Step 1: Create a Personal Access Token (PAT)
+1. Go to [GitHub Personal Access Tokens settings](https://github.com/settings/tokens).
+2. Click **Generate new token** (or **Generate new token (classic)**).
+3. Choose the following settings:
+   - **Scopes**: Select the options you need (e.g., `repo` to access repositories).
+   - **Expiration**: Set how long the token should last (e.g., 30 days).
+4. Click **Generate token** and **copy the token**. Save it securely because you won’t see it again.
+
+### Step 2: Use the Token in Git
+1. When pushing to GitHub, use your token as the password:
    ```bash
    git push
+   Username for 'https://github.com': your_username
+   Password for 'https://your_username@github.com': [paste your token here]
    ```
+
+2. Save the token for future use (optional):
+   ```bash
+   git config --global credential.helper store
+   ```
+   After running this, Git will remember your token next time you push.
 
 ---
 
